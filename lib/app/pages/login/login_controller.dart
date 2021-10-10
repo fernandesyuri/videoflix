@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:videoflix/app/pages/login/login_presenter.dart';
+import 'package:videoflix/app/pages/pages.dart';
+import 'package:videoflix/app/utils/constants.dart';
+import 'package:videoflix/domain/utils/constants.dart';
 // import 'package:videoflix/app/utils/constants.dart';
 
 class LoginController extends Controller {
@@ -25,13 +28,26 @@ class LoginController extends Controller {
   void _loginOnComplete() {
     dismissLoading();
     // HHHConstants.drawer = HhDrawer(); // refresh
-    // Navigator.of(getContext()).pushReplacementNamed('/home');
+    Navigator.of(getContext()).pushReplacementNamed(Pages.home);
     print('Login com sucesso!');
   }
 
-  void _loginOnError(e) {
+  void _loginOnError(List<LoginValidationError> e) {
+    emailTextError = null;
+    passwordTextError = null;
+    for (LoginValidationError error in e) {
+      if (error == LoginValidationError.emailRequired) {
+        emailTextError = Strings.emailObrigatorio;
+      } else if (error == LoginValidationError.passwordRequired) {
+        passwordTextError = Strings.senhaObrigatoria;
+      } else if (error == LoginValidationError.invalidEmail) {
+        emailTextError = Strings.emailInvalido;
+      } else if (error == LoginValidationError.loginFailed) {
+        emailTextError = Strings.loginFalhou;
+        passwordTextError = Strings.loginFalhou;
+      }
+    }
     dismissLoading();
-    print('Erro printado a partir do login controller: ' + e);
     // showGenericSnackbar(getStateKey(), e.message, isError: true);
   }
 

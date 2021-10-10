@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:videoflix/app/pages/home/home_view.dart';
 import 'package:videoflix/app/pages/pages.dart';
 
 class Router {
@@ -13,8 +14,8 @@ class Router {
       //   return _buildRoute(settings, HomePage());
       case Pages.login:
         return _buildRoute(settings, LoginPage());
-      // case Pages.register:
-      //   return _buildRoute(settings, RegisterPage());
+      case Pages.home:
+        return _buildRoute(settings, HomePage());
       // case Pages.forgot:
       //   return _buildRoute(settings, ForgotPwPage());
       // case Pages.map:

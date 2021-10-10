@@ -35,13 +35,14 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
   @override
   Widget get view => Scaffold(
         key: globalKey,
+        resizeToAvoidBottomInset: false,
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Stack(
             children: [
-              Image.asset(
-                'images/loginBg.jpg',
+              Image(
+                image: AssetImage('assets/images/login_bg.jpg'),
                 fit: BoxFit.cover,
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
@@ -56,10 +57,11 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
                     horizontal: 30.0, vertical: 10.0),
                 child: Column(
                   children: [
+                    SizedBox(height: 20.0),
                     Row(
                       children: [
                         WebsafeSvg.asset(
-                          'images/logo.svg',
+                          'assets/images/logo.svg',
                           fit: BoxFit.contain,
                           height: 35.0,
                         ),
@@ -77,8 +79,15 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 30.0, vertical: 100.0),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 30.0,
+                                vertical: MediaQuery.of(context).size.height >
+                                        500
+                                    ? 100.0
+                                    : (MediaQuery.of(context).size.height > 350
+                                        ? 30.0
+                                        : 15.0),
+                              ),
                               child: Column(
                                 children: [
                                   Align(
@@ -90,31 +99,51 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 30.0),
-                                  // EnsureVisibleWhenFocused(
-                                  //   child:
-                                  InputField(
-                                    controller.emailTextController,
-                                    'Email',
-                                    controller.emailTextError,
-                                    _emailFocus,
-                                    type: TextInputType.emailAddress,
+                                  SizedBox(
+                                    height:
+                                        (MediaQuery.of(context).size.height >
+                                                350
+                                            ? 30.0
+                                            : 15.0),
                                   ),
-                                  //   focusNode: _emailFocus,
-                                  // ),
+                                  ControlledWidgetBuilder<LoginController>(
+                                    builder: (context, controller) {
+                                      // EnsureVisibleWhenFocused(
+                                      //   child:
+                                      return InputField(
+                                        controller.emailTextController,
+                                        'Email',
+                                        controller.emailTextError,
+                                        _emailFocus,
+                                        type: TextInputType.emailAddress,
+                                      );
+                                      //   focusNode: _emailFocus,
+                                      // ),
+                                    },
+                                  ),
                                   SizedBox(height: 10.0),
-                                  // EnsureVisibleWhenFocused(
-                                  //   child:
-                                  InputField(
-                                    controller.passwordTextController,
-                                    'Senha',
-                                    controller.passwordTextError,
-                                    _passFocus,
-                                    isPassword: true,
+                                  ControlledWidgetBuilder<LoginController>(
+                                    builder: (context, controller) {
+                                      // EnsureVisibleWhenFocused(
+                                      //   child:
+                                      return InputField(
+                                        controller.passwordTextController,
+                                        'Senha',
+                                        controller.passwordTextError,
+                                        _passFocus,
+                                        isPassword: true,
+                                      );
+                                      //   focusNode: _emailFocus,
+                                      // ),
+                                    },
                                   ),
-                                  //   focusNode: _emailFocus,
-                                  // ),
-                                  SizedBox(height: 30.0),
+                                  SizedBox(
+                                    height:
+                                        (MediaQuery.of(context).size.height >
+                                                350
+                                            ? 30.0
+                                            : 15.0),
+                                  ),
                                   SizedBox(
                                     width: double.infinity,
                                     child: ElevatedButton(

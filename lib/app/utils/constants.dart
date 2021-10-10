@@ -6,14 +6,23 @@ const fundoCinzaTextField = Color(0xFF333333);
 const fundoVermelhoBotao = Color(0xFFFD142E);
 
 class UIConstants {
+  static const String appName = "VideoFlix";
+  static const Color errorTextColor = Colors.red;
+
+  static const Color navbarBackgroundColor = Colors.grey;
+
   static const TextStyle fieldHintStyle =
       TextStyle(fontWeight: FontWeight.w300, color: Colors.black);
-  static const String appName = "Hotter'n Hell";
   static const double progressBarOpacity = 0.6;
   static const Color progressBarColor = Colors.black;
 }
 
 class Strings {
+  static const String emailObrigatorio = 'Digite um email';
+  static const String emailInvalido = 'Digite um email válido';
+  static const String senhaObrigatoria = 'Digite uma senha';
+  static const String loginFalhou = 'Email ou senha incorretos';
+
   static const String registrationFormIncomplete = 'Form must be filled out.';
   static const String tosNotAccepted =
       'Please accept the Terms of Service to register.';
