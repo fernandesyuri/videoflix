@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:videoflix/app/pages/home/components/navbar.dart';
 import 'package:videoflix/app/pages/home/home_controller.dart';
 import 'package:videoflix/app/utils/constants.dart';
-import 'package:websafe_svg/websafe_svg.dart';
 
 class HomePage extends View {
   // HomePage({Key key, this.title}) : super(key: key);
@@ -24,8 +24,7 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
 
   HomePageView(this.controller) : super(controller);
 
-  @override
-  Widget get desktopView => Scaffold(
+  Widget get skeleton => Scaffold(
         key: globalKey,
         resizeToAvoidBottomInset: false,
         body: Container(
@@ -33,19 +32,6 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
           height: MediaQuery.of(context).size.height,
           child: Stack(
             children: [
-              Row(
-                children: [
-                  ControlledWidgetBuilder<HomeController>(
-                    builder: (context, controller) {
-                      return Container(
-                        child: Text('Navbar'),
-                        height: 60.0,
-                        color: controller.navbarBackgroundColor,
-                      );
-                    },
-                  ),
-                ],
-              ),
               ListView(
                 controller: controller.scrollController,
                 children: [
@@ -56,10 +42,20 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Navbar(),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       );
+
+  @override
+  Widget get desktopView => skeleton;
 
   @override
   Widget get mobileView => MediaQuery.of(context).size.height < 415
@@ -85,17 +81,8 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
       );
 
   @override
-  Widget get tabletView => MediaQuery.of(context).size.height < 415
-      ? mobileViewSideways
-      : Scaffold(
-          key: globalKey,
-          resizeToAvoidBottomInset: false,
-          body: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Text('Tablet'),
-          ),
-        );
+  Widget get tabletView =>
+      MediaQuery.of(context).size.height < 415 ? mobileViewSideways : skeleton;
   @override
   Widget get watchView => Scaffold(
         key: globalKey,

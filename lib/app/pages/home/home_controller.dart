@@ -7,20 +7,26 @@ import 'package:videoflix/domain/utils/constants.dart';
 
 class HomeController extends Controller {
   ScrollController scrollController = ScrollController();
-  Color navbarBackgroundColor = UIConstants.navbarBackgroundColor;
+  Color navbarBackgroundColor = Colors.transparent;
   HomePresenter _homePresenter;
 
   HomeController() : _homePresenter = HomePresenter() {
     initListeners();
   }
 
+  void scrollToTop() {
+    scrollController.animateTo(
+      0.0,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   /// Initializes [Presenter] listeners
   void initListeners() {
     scrollController.addListener(() {
-      if (scrollController.position.atEdge) {
-        if (scrollController.position.pixels < 30.0) {
-          navbarBackgroundColor = UIConstants.navbarBackgroundColor;
-        }
+      if (scrollController.position.pixels > 10.0) {
+        navbarBackgroundColor = UIConstants.navbarBackgroundColor;
       } else {
         navbarBackgroundColor = Colors.transparent;
       }

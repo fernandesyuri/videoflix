@@ -10,6 +10,7 @@ class UIConstants {
   static const Color errorTextColor = Colors.red;
 
   static const Color navbarBackgroundColor = Colors.grey;
+  static const double navbarItemsDistance = 30.0;
 
   static const TextStyle fieldHintStyle =
       TextStyle(fontWeight: FontWeight.w300, color: Colors.black);
