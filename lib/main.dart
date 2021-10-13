@@ -3,6 +3,8 @@ import 'package:logging/logging.dart';
 import 'package:videoflix/app/pages/login/login_view.dart';
 import 'package:videoflix/app/utils/router.dart' as CustomRouter;
 import 'package:videoflix/data/exceptions/authentication_exception.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +26,16 @@ class MyApp extends StatelessWidget {
       home: LoginPage(),
       onGenerateRoute: _router.getRoute,
       navigatorObservers: [_router.routeObserver],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('pt', 'BR'),
+        Locale('en', ''),
+      ],
     );
   }
 

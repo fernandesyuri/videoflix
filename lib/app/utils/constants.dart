@@ -12,6 +12,8 @@ class UIConstants {
   static const Color navbarBackgroundColor = Colors.grey;
   static const double navbarItemsDistance = 30.0;
 
+  static const double horizontalPadding = 30.0;
+
   static const TextStyle fieldHintStyle =
       TextStyle(fontWeight: FontWeight.w300, color: Colors.black);
   static const double progressBarOpacity = 0.6;

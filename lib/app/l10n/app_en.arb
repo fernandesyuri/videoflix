@@ -1,0 +1,38 @@
+{
+    "signIn": "Sign In",
+    "@signIn": {
+        "description": "Text shown over the email field on sign in form"
+    },
+    "emailPlaceholder": "Email",
+    "@emailPlaceholder": {
+        "description": "Email placeholder text"
+    },
+    "passwordPlaceholder": "Password",
+    "@passwordPlaceholder": {
+        "description": "Password placeholder text"
+    },
+    "signInButton": "Sign In",
+    "@signInButton": {
+        "description": "Sign in button text"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Home screen name that is shown on the Navbar"
+    },
+    "series": "Series",
+    "@series": {
+        "description": "Series screen name that is shown on the Navbar"
+    },
+    "movies": "Movies",
+    "@movies": {
+        "description": "Movies screen name that is shown on the Navbar"
+    },
+    "myList": "My List",
+    "@myList": {
+        "description": "My list screen name that is shown on the Navbar"
+    },
+    "categoriesPlaceholder": "Categories",
+    "@categoriesPlaceholder": {
+        "description": "Categories selector placeholder"
+    }
+}

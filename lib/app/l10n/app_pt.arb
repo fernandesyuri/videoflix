@@ -1,0 +1,11 @@
+{
+    "signIn": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Senha",
+    "signInButton": "Entrar",
+    "home": "Início",
+    "series": "Séries",
+    "movies": "Filmes",
+    "myList": "Minha Lista",
+    "categoriesPlaceholder": "Categorias"
+}

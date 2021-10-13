@@ -6,6 +6,7 @@ import 'package:videoflix/app/pages/login/login_controller.dart';
 import 'package:videoflix/app/utils/constants.dart';
 import 'package:videoflix/data/repositories/data_auth_repo.dart';
 import 'package:websafe_svg/websafe_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends View {
   // LoginPage({Key key, this.title}) : super(key: key);
@@ -93,7 +94,7 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "Login",
+                                      AppLocalizations.of(context)!.signIn,
                                       style: TextStyle(
                                         fontSize: 28.0,
                                       ),
@@ -112,7 +113,8 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
                                       //   child:
                                       return InputField(
                                         controller.emailTextController,
-                                        'Email',
+                                        AppLocalizations.of(context)!
+                                            .emailPlaceholder,
                                         controller.emailTextError,
                                         _emailFocus,
                                         type: TextInputType.emailAddress,
@@ -128,7 +130,8 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
                                       //   child:
                                       return InputField(
                                         controller.passwordTextController,
-                                        'Senha',
+                                        AppLocalizations.of(context)!
+                                            .passwordPlaceholder,
                                         controller.passwordTextError,
                                         _passFocus,
                                         isPassword: true,
@@ -150,7 +153,8 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
                                       onPressed: () {
                                         controller.login();
                                       },
-                                      child: Text("Entrar"),
+                                      child: Text(AppLocalizations.of(context)!
+                                          .signInButton),
                                       style: ElevatedButton.styleFrom(
                                         primary: fundoVermelhoBotao,
                                       ),
