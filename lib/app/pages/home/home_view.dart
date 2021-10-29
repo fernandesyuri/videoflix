@@ -28,9 +28,9 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
   Widget get skeleton => Scaffold(
         key: globalKey,
         resizeToAvoidBottomInset: false,
+        // body: CategoriesSelector(),
         body: Container(
           child: Stack(
-            // CategoriesSelector(),
             children: [
               ListView.builder(
                 controller: controller.scrollController,
@@ -51,8 +51,12 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 60.0),
-                            CategoriesSelector(),
+                            SizedBox(height: 80.0),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: UIConstants.horizontalPadding),
+                              child: CategoriesSelector(),
+                            ),
                           ],
                         ),
                         Container(

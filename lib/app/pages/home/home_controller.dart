@@ -16,23 +16,19 @@ class HomeController extends Controller {
     initListeners();
     categorieOptions = [
       DropdownMenuItem<String>(
-        value: 'abc123',
-        child: Text('Teste 2'),
+        value: 'default',
+        child: Text('Categorias'),
       ),
       DropdownMenuItem<String>(
-        value: 'a',
-        child: Text('Teste 23'),
+        value: '1',
+        child: Text('Categoria 1'),
+      ),
+      DropdownMenuItem<String>(
+        value: '2',
+        child: Text('Categoria 2'),
       ),
     ];
-    selectedCategorie = 'a';
-    // categorieOptions = [
-    //   DropdownMenuItem<String>(
-    //     value: null,
-    //     child: Text(AppLocalizations.of(getContext())!.categoriesPlaceholder),
-    //   )
-    // ];
-    // selectedCategorie =
-    //     AppLocalizations.of(getContext())!.categoriesPlaceholder;
+    selectedCategorie = 'default';
   }
 
   void scrollToTop() {
@@ -53,5 +49,10 @@ class HomeController extends Controller {
       }
       refreshUI();
     });
+  }
+
+  void changeSelectedCategorie(String? newCategorie) {
+    selectedCategorie = newCategorie;
+    refreshUI();
   }
 }

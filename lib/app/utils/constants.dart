@@ -9,6 +9,7 @@ class UIConstants {
   static const String appName = "VideoFlix";
   static const Color errorTextColor = Colors.red;
 
+  static const Color pageBackgroundColor = Color(0xFF303030);
   static const Color navbarBackgroundColor = Colors.grey;
   static const double navbarItemsDistance = 30.0;
 
