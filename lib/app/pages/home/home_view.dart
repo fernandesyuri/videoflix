@@ -41,17 +41,39 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
                   if (index == 0) {
                     return Stack(
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/tron.jpg'),
-                              fit: BoxFit.cover,
+                        Stack(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('images/tron.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height,
+                              decoration: BoxDecoration(
+                                color: UIConstants.pageBackgroundColor,
+                                gradient: LinearGradient(
+                                  begin: FractionalOffset.topCenter,
+                                  end: FractionalOffset.bottomCenter,
+                                  colors: [
+                                    UIConstants.pageBackgroundColor
+                                        .withOpacity(0.0),
+                                    UIConstants.pageBackgroundColor,
+                                  ],
+                                  stops: [0.9, 1.0],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(height: 80.0),
                             Padding(
@@ -59,9 +81,12 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
                                   left: UIConstants.horizontalPadding),
                               child: CategoriesSelector(),
                             ),
+                            SizedBox(height: 40.0),
+                            HeaderInfoAndButtons(),
+                            SizedBox(height: 80.0),
+                            Carousel(index),
                           ],
                         ),
-                        HeaderInfoAndButtons(),
                       ],
                     );
                   } else {

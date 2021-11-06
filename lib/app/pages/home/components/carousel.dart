@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:videoflix/app/utils/constants.dart';
 
 class Carousel extends StatelessWidget {
   final int index;
@@ -28,21 +29,22 @@ class Carousel extends StatelessWidget {
           child: CarouselSlider.builder(
             itemCount: this.itemCount,
             itemBuilder: (context, index, realIdx) {
-              final int first = index * 2;
-              final int second = first + 1;
               return Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: BoxDecoration(color: Colors.amber),
-                child: Text(
-                  'index $index | realIndex $realIdx | first $first | second $second',
-                  style: TextStyle(fontSize: 16.0),
+                decoration:
+                    BoxDecoration(color: UIConstants.pageBackgroundColor),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: Image.asset(
+                    'images/bleach.webp',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             },
             options: CarouselOptions(
-              height: 200.0,
-              aspectRatio: 16 / 9,
+              aspectRatio: (9 / 1),
               viewportFraction: 0.2,
               enableInfiniteScroll: false,
               initialPage: 2,
