@@ -83,8 +83,9 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
                             ),
                             SizedBox(height: 40.0),
                             HeaderInfoAndButtons(),
-                            SizedBox(height: 80.0),
+                            SizedBox(height: 60.0),
                             Carousel(index),
+                            SizedBox(height: 30.0),
                           ],
                         ),
                       ],
@@ -93,7 +94,7 @@ class HomePageView extends ResponsiveViewState<HomePage, HomeController> {
                     return Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 10.0),
+                          padding: EdgeInsets.only(top: 10.0, bottom: 30.0),
                           child: Carousel(index),
                         ),
                       ],

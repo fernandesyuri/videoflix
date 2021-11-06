@@ -11,7 +11,7 @@ class HeaderInfoAndButtons extends StatelessWidget {
         padding: EdgeInsets.only(left: UIConstants.horizontalPadding),
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            minWidth: 600.0,
+            minWidth: 550.0,
             maxWidth: 800.0,
           ),
           child: SizedBox(
