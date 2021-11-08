@@ -9,14 +9,21 @@ class UIConstants {
   static const String appName = "VideoFlix";
   static const Color errorTextColor = Colors.red;
 
-  static const Color pageBackgroundColor = Color(0xFF303030);
-  static const Color navbarBackgroundColor = Colors.grey;
-  static const double navbarItemsDistance = 30.0;
+  static const Color pageBackgroundColor = Color(0xFF141414);
+  static const Color navbarBackgroundColor = Color(0XFF0A0A0A);
+  static const FontWeight navbarFontWeight = FontWeight.w500;
+  static const double navbarItemsDistance = 24.0;
+  static const double navbarIconsSize = 28.0;
+  static const double navbarHeight = 70.0;
 
-  static const double horizontalPadding = 30.0;
+  static const Color searchInputBorderColor = Colors.white;
 
-  static const TextStyle fieldHintStyle =
-      TextStyle(fontWeight: FontWeight.w300, color: Colors.black);
+  static const double horizontalPadding = 60.0;
+
+  static const TextStyle fieldHintStyle = TextStyle(
+    fontWeight: FontWeight.w300,
+    color: Colors.black,
+  );
   static const double progressBarOpacity = 0.6;
   static const Color progressBarColor = Colors.black;
 }

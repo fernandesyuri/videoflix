@@ -13,6 +13,12 @@ class HomeController extends Controller {
   List<DropdownMenuItem<String>>? categorieOptions;
   String? selectedCategorie;
 
+  bool isSearchBarVisible = false;
+  double searchBarWidth = 50.0;
+  final int searchInputAnimationDurationMilliseconds = 200;
+  String searchInputString = "";
+  final FocusNode searchInputFocusNode = FocusNode();
+
   HomeController() : _homePresenter = HomePresenter() {
     initListeners();
     categorieOptions = [
@@ -33,11 +39,14 @@ class HomeController extends Controller {
   }
 
   void scrollToTop() {
-    scrollController.animateTo(
-      0.0,
-      duration: Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
+    if (scrollController.hasClients) {
+      scrollController.animateTo(
+        0.0,
+        duration:
+            Duration(milliseconds: searchInputAnimationDurationMilliseconds),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   /// Initializes [Presenter] listeners
@@ -55,5 +64,30 @@ class HomeController extends Controller {
   void changeSelectedCategorie(String? newCategorie) {
     selectedCategorie = newCategorie;
     refreshUI();
+  }
+
+  void toggleSearchBarVisible() async {
+    bool visible = !this.isSearchBarVisible;
+    if (visible == true) {
+      this.isSearchBarVisible = visible;
+      refreshUI();
+      await Future.delayed(Duration(milliseconds: 10));
+      searchInputFocusNode.requestFocus();
+      if (visible == true)
+        this.searchBarWidth = 300.0;
+      else
+        this.searchBarWidth = 50.0;
+      refreshUI();
+    } else {
+      if (visible == true)
+        this.searchBarWidth = 250.0;
+      else
+        this.searchBarWidth = 50.0;
+      refreshUI();
+      await Future.delayed(
+          Duration(milliseconds: searchInputAnimationDurationMilliseconds));
+      this.isSearchBarVisible = visible;
+      refreshUI();
+    }
   }
 }

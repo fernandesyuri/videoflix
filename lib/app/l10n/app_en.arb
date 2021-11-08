@@ -34,5 +34,17 @@
     "categoriesPlaceholder": "Categories",
     "@categoriesPlaceholder": {
         "description": "Categories selector placeholder"
+    },
+    "search": "Search",
+    "@search": {
+        "description": "Search item shown on navbar"
+    },
+    "notifications": "Notifications",
+    "@notifications": {
+        "description": "Notifications item shown on navbar"
+    },
+    "myAccount": "My Account",
+    "@myAccount": {
+        "description": "\"My Account\" item shown on navbar"
     }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:videoflix/app/pages/login/login_view.dart';
+import 'package:videoflix/app/utils/constants.dart';
 import 'package:videoflix/app/utils/router.dart' as CustomRouter;
 import 'package:videoflix/data/exceptions/authentication_exception.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,7 +23,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'VideoFlix',
-      theme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        canvasColor: UIConstants.pageBackgroundColor,
+      ),
       home: LoginPage(),
       onGenerateRoute: _router.getRoute,
       navigatorObservers: [_router.routeObserver],
