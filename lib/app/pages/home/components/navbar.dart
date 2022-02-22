@@ -18,10 +18,11 @@ class Navbar extends StatelessWidget {
         final HomeController controller =
             FlutterCleanArchitecture.getController<HomeController>(context);
         final AppLocalizations localizations = AppLocalizations.of(context)!;
-        return Container(
+        return AnimatedContainer(
           width: MediaQuery.of(context).size.width,
           height: UIConstants.navbarHeight,
           color: controller.navbarBackgroundColor,
+          duration: Duration(milliseconds: 150),
           child: Row(
             children: [
               Expanded(

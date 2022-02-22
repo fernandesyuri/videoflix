@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:videoflix/app/pages/home/home_controller.dart';
 import 'package:videoflix/app/utils/constants.dart';
 
 class Carousel extends StatelessWidget {
@@ -12,6 +16,8 @@ class Carousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HomeController _homeController =
+        FlutterCleanArchitecture.getController<HomeController>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,16 +43,28 @@ class Carousel extends StatelessWidget {
               child: CarouselSlider.builder(
                 itemCount: this.itemCount,
                 itemBuilder: (context, index, realIdx) {
+                  GlobalKey _itemKey = GlobalKey();
                   return Container(
                     width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                     decoration:
                         BoxDecoration(color: UIConstants.pageBackgroundColor),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5.0),
-                      child: Image.asset(
-                        'images/bleach.webp',
-                        fit: BoxFit.cover,
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () {
+                          // _homeController
+                          //     .getSelectedCarouselItemPosition(_itemKey);
+                          _homeController.setDetailsPopup(true);
+                        },
+                        child: ClipRRect(
+                          key: _itemKey,
+                          borderRadius: BorderRadius.circular(5.0),
+                          child: Image.asset(
+                            'images/bleach.webp',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   );

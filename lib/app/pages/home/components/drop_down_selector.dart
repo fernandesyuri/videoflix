@@ -3,15 +3,25 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:videoflix/app/pages/home/home_controller.dart';
 import 'package:videoflix/app/utils/constants.dart';
 
-class CategoriesSelector extends StatefulWidget {
-  const CategoriesSelector({Key? key}) : super(key: key);
+class CustomDropDownSelector extends StatefulWidget {
+  final List<DropdownMenuItem<String>>? items;
+  final void Function()? onTap;
+  final void Function(String?)? onChanged;
+  final String? value;
+  const CustomDropDownSelector(
+      {Key? key, required this.items, this.onTap, this.onChanged, this.value})
+      : super(key: key);
 
   @override
-  _CategoriesSelectorState createState() => _CategoriesSelectorState();
+  _CustomDropDownSelectorState createState() =>
+      _CustomDropDownSelectorState(this.value);
 }
 
-class _CategoriesSelectorState extends State<CategoriesSelector> {
+class _CustomDropDownSelectorState extends State<CustomDropDownSelector> {
   final GlobalKey dropdownKey = GlobalKey();
+  String? selectedValue;
+
+  _CustomDropDownSelectorState(this.selectedValue);
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +43,17 @@ class _CategoriesSelectorState extends State<CategoriesSelector> {
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     key: dropdownKey,
-                    value: controller.selectedCategorie,
+                    value: this.selectedValue,
                     icon: const Icon(Icons.arrow_downward),
                     elevation: 16,
-                    items: controller.categorieOptions,
-                    onTap: () => print('Clicou'),
+                    items: this.widget.items,
+                    onTap: this.widget.onTap,
                     enableFeedback: true,
                     onChanged: (_newValue) {
-                      print('Mudou');
-                      controller.changeSelectedCategorie(_newValue);
+                      setState(() {
+                        this.selectedValue = _newValue;
+                      });
+                      this.widget.onChanged?.call(_newValue);
                     },
                   ),
                 ),
